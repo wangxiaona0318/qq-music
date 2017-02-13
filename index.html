@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>qq-music</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <link rel="stylesheet/less" href="css/index.less"/>
+    <link rel="icon" href="img/favicon.ico" type="icon/x-icon"/>
+    <script src="js/less-2.5.3.min.js"></script><!--上线的时候用编译好的-->
+</head>
+<body>
+<!--section.musicBox>header.header+main.main+footer.footer-->
+<section class="musicBox">
+    <!--base-->
+    <div class="musicBg"></div><!--模糊背景-->
+    <div class="musicBgMask"></div><!--黑层-->
+    <audio src="img/demo.m4a" preload="none" id="musicAudio"></audio>
+    <!--
+    audio中常用的几个属性：
+        1.controls:是否使用浏览器自带的播放组件播放音乐，默认不用，写上代表使用
+        2.preload:是否提前加载(当前页面打开的时候是否加载音频文件)，默认是auto代表加载；metadata加载基础(头部)信息；none什么都不加载，只有播放的时候在加载
+        3.autoplay:打开页面就开始自动播放
+        4.loop:是否循环播放
+        5.duration: 当前音频的总时间(只有音频加载后都会获取到结果，否则获取的结果是nan)
+        6.currentTime:当前音频播放的时间，已经播放多少了。获取的结果都是秒
+        7.paused:是否暂停
+    audio中常用的方法：
+        1.play() 播放
+        2.pause() 暂停  ele.paused==true 当前为暂停状态
+    audio中常用的事件
+        canplay:音频部分资源已经加载成功，可以播放出声音了
+
+    -->
+    <!--HEADER-->
+    <header class="header">
+        <div class="base">
+            <img src="img/poster.jpg" alt=""/>
+
+            <p>
+                <span>模特</span>
+                <span>李荣浩</span>
+            </p>
+        </div>
+        <a href="javascript:;" class="musicBtn play"></a>
+        <a href="javascript:;" class="musicBtn pause"></a>
+    </header>
+    <!--MAIN-->
+    <main class="main">
+        <div class="lyric">
+
+        </div>
+    </main>
+    <!--FOOTER-->
+    <footer class="footer">
+        <div class="storage"><a href="javascript:;"></a></div>
+        <div class="progress">
+            <div class="current">00:00</div>
+            <div class="timeLine"><span></span></div>
+            <div class="duration">00:00</div>
+        </div>
+        <div class="downLoad">
+            <i>下载这首音乐</i>
+        </div>
+    </footer>
+</section>
+<script src="js/zepto.min.js"></script><!--不兼容ie678-->
+<script src="js/index.js"></script>
+</body>
+</html>

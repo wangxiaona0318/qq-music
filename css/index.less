@@ -1,0 +1,242 @@
+/*
+在当前less文件中导入所依赖的less
+reference:只是导入供调取使用，编译的时候不编译里面的代码
+//这里有五六个属性，自己看下，不常用
+*/
+@import "reset";
+@import (reference)"public";
+
+html {
+  font-size: 100px; /*640px 1rem=100px*/
+}
+
+html, body, .musicBox {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/*背景*/
+.musicBox {
+  position: relative;
+
+  .musicBg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url(../img/poster.jpg) no-repeat;
+    background-size: cover;
+    -webkit-filter: blur(15px);
+    filter: blur(15px);
+    z-index: -2;
+  }
+
+  .musicBgMask {
+    .musicBg;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: -1;
+    -webkit-filter: blur(0);
+    filter: blur(0);
+  }
+
+  audio{
+    display: none;
+  }
+}
+
+.header {
+  position: relative;
+  padding: .3rem;
+  height: 1.2rem;
+  background: rgba(0, 0, 0, .2);
+
+  .base {
+    width: 4.5rem;
+    height: 100%;
+
+    img {
+      display: inline-block;
+      width: 1.2rem;
+      height: 1.2rem;
+      vertical-align: top;
+    }
+    p {
+      display: inline-block;
+      vertical-align: top;
+
+      span {
+        display: block;
+        line-height: .6rem;
+        font-size: .36rem;
+        color: @color-white;
+      }
+    }
+
+  }
+
+  .musicBtn {
+    position: absolute;
+    right: .3rem;
+    top: 50%;
+    margin-top: -.45rem;
+    width: .9rem;
+    height: .9rem;
+    border: .02rem solid @color-white;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border-radius: 50%;
+
+    &.play {
+      &:after {
+        display: block;
+        content: '';
+        width: 0;
+        height: 0;
+        font-size: 0;
+        border: .2rem solid transparent;
+        border-left-color: @color-white;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin: -.2rem 0 0 -.05rem;
+      }
+    }
+
+    &.pause {
+      display: none;
+      &:after {
+        display: block;
+        content: '||';
+        letter-spacing: .03rem;
+        width: .4rem;
+        height: .4rem;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin: -.2rem 0 0 -.2rem;
+        text-align: center;
+        line-height: .4rem;
+        color: @color-white;
+        font-size: .32rem;
+      }
+    }
+  }
+}
+
+.main {
+  position: relative;
+  margin: .4rem .2rem;
+  height: 7rem;
+  overflow: hidden;
+
+  .lyric {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    .transitionFn(@duration: .3s);
+
+    p {
+      line-height: .84rem;
+      text-align: center;
+      color: @color-gray;
+      font-size: .32rem;
+      letter-spacing: .01rem;
+      /*超出部分...*/
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+
+      &.bg{
+        color:@color-green;
+      }
+    }
+  }
+}
+
+.footer {
+  margin: 0 .2rem;
+  height: 3rem;
+
+  .storage {
+    position: relative;
+    height: .8rem;
+
+    a {
+      position: absolute;
+      top: 50%;
+      margin-top: -.21rem;
+      right: 0;
+      display: block;
+      width: .5rem;
+      height: .42rem;
+      .spriteFn()
+
+    }
+  }
+
+  .progress{
+    height: .8rem;
+    line-height: .8rem;
+
+    .current,.duration{
+      float: left;
+      width: .9rem;
+      color: @color-gray;
+      font-size: .24rem;
+      text-align: center;
+    }
+
+    .timeLine{
+      position: relative;
+      float: left;
+      width: 4.2rem;
+      height: .04rem;
+      background: @color-gray;
+      margin-top: .38rem;
+
+      span{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 50%;
+        height: 100%;
+        background: @color-green;
+        .transitionFn(@duration: .5s);
+      }
+    }
+  }
+
+  .downLoad{
+    height: .9rem;
+    i{
+      position: relative;
+      display: block;
+      margin: 0 auto;
+      width: 4.4rem;
+      height: 100%;
+      line-height: .9rem;
+      text-align: center;
+      color: @color-white;
+      background: @color-green;
+      font-size: .36rem;
+      font-style: normal;
+      border-radius: 1.25rem;
+
+      &:after{
+        display: block;
+        content: '';
+        position: absolute;
+        width: .66rem;
+        height: .66rem;
+        border-radius: 50%;
+        .spriteFn(@y: -6rem);
+        top: 50%;
+        margin-top: -.33rem;
+        left: .12rem;
+      }
+    }
+  }
+}
